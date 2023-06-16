@@ -1,6 +1,7 @@
 package Modules;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -50,22 +51,23 @@ public class sidemenunavigation {
 
     @Test(priority = 3, description = "Verify User can navigate to all the main pages from the sidemenu")
     public void navigatetosidemenu() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        ArrayList<String> menubarList = new ArrayList<String>();
-        menubarList.add("Dashboard");
-        menubarList.add("Student Management");
-        menubarList.add("Transactions");
-// Add other menu bar names
-        for (String menubarname : menubarList) {
-            // Click on the menu bar item
-            WebElement menuBarItem = driver.findElement(By.xpath
-                    ("//div[@class='d-color ng-tns-c164-0 ng-star-inserted']"));
-            menuBarItem.getText();
-            WebDriverWait pageWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            // Adjust the following condition based on the element or condition that indicates the page has loaded successfully
-            pageWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(),'" + menubarname + "')]")));
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement sideMenu = driver.findElement(By.xpath("//li[contains(@class,'ng-tns-c164-0 ng-star-inserted')]"));
+        // Adjust the XPath to target your side menu element
+        js.executeScript("arguments[0].scrollIntoView(true);", sideMenu);
 
 
+        String[] labels = {
+                "Dashboard", "Student Management", "Transactions", "Course Management", "Chapter Management",
+                "Ask Doubt", "Offer Management", "Trainer Management", "Exam", "Testimonial"};
+        for (String navigatetosidemenu  : labels) {
+            WebElement element = driver.findElement(By.xpath("(//li[contains(.,'" +navigatetosidemenu+ "')])[1]"));
+            String text = element.getText();
+            Assert.assertEquals(text, navigatetosidemenu );
+            System.out.println(navigatetosidemenu  + ": " + text);
         }
     }
-        }
+
+
+}
