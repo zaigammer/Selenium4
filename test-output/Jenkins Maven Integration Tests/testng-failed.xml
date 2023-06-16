@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Jenkins Maven Integration Tests]" parallel="tests">
+  <parameter name="browser" value="Firefox"/>
+  <parameter name="version" value="latest"/>
+  <parameter name="resolution" value="2560x1440"/>
+  <parameter name="platform" value="OS X Mavericks"/>
+  <test name="Google Search Test - 4(failed)" parallel="tests">
+    <parameter name="browser" value="Firefox"/>
+    <parameter name="version" value="latest"/>
+    <parameter name="resolution" value="2560x1440"/>
+    <parameter name="platform" value="OS X Mavericks"/>
+    <classes>
+      <class name="Modules.GoogleSearchTest">
+        <methods>
+          <include name="testSetUp"/>
+          <include name="testSetUp"/>
+          <include name="testSetUp"/>
+          <include name="testSetUp"/>
+          <include name="test_Selenium4_GoogleSearch"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- Modules.GoogleSearchTest -->
+    </classes>
+  </test> <!-- Google Search Test - 4(failed) -->
+</suite> <!-- Failed suite [Jenkins Maven Integration Tests] -->

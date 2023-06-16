@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Jenkins Maven Integration Tests" thread-count="5" parallel="tests">
+<!-- Add the location where the project is stored in your machine -->
+ 
+<test name="Google Search Test - 1">
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="version" value="latest"/>
+        <parameter name="platform" value="Windows 10"/>
+        <parameter name="resolution" value="1600x1200"/>
+        <classes>
+              <class name="Modules.GoogleSearchTest"/>
+        </classes>
+</test>
+ 
+<test name="Google Search Test - 2">
+        <parameter name="browser" value="MicrosoftEdge"/>
+        <parameter name="version" value="84.0"/>
+        <parameter name="platform" value="Windows 10"/>
+        <parameter name="resolution" value="1920x1080"/>
+        <classes>
+               <class name="Modules.GoogleSearchTest"/>
+        </classes>
+</test>
+ 
+<test name="Google Search Test - 3">
+       <parameter name="browser" value="Chrome"/>
+       <parameter name="version" value="latest"/>
+       <parameter name="platform" value="macOS Mojave"/>
+       <parameter name="resolution" value="2048x1536"/>
+       <classes>
+             <class name="Modules.GoogleSearchTest"/>
+       </classes>
+</test>
+ 
+<test name="Google Search Test - 4">
+       <parameter name="browser" value="Firefox"/>
+       <parameter name="version" value="latest"/>
+       <parameter name="platform" value="OS X Mavericks"/>
+       <parameter name="resolution" value="2560x1440"/>
+       <classes>
+              <class name="Modules.GoogleSearchTest"/>
+       </classes>
+</test>
+</suite>
