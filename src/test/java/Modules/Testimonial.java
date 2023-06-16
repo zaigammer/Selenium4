@@ -54,8 +54,9 @@ public class Testimonial {
 
     @Test(priority = 3)
     public void testimonial() throws InterruptedException {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement Testimonial = driver.findElement(
-                        By.xpath("//span[contains(text(),'Testimonial')]"));
+                By.xpath("//span[contains(text(),'Testimonial')]"));
         Actions actions = new Actions(driver);
         actions.moveToElement(Testimonial).click().perform();
         Thread.sleep(1000);
@@ -63,13 +64,58 @@ public class Testimonial {
 
         driver.findElement(By.xpath("(//input[@id='first'])[1]")).
                 sendKeys("New Testimonial");
-       driver.findElement(By.xpath("//textarea[@placeholder='Description']")).
-               sendKeys("New Description");
-       //Add Thumbnail
-        WebElement Thumbnail = driver.findElement(By.xpath("//div[@class='card-additem add-food-image ng-star-inserted']"));
-        Thumbnail.sendKeys("C:/Users/DELL/Downloads/Banner.jpg");
+        driver.findElement(By.xpath("//textarea[@placeholder='Description']")).
+                sendKeys("New Description");
+        //Add Thumbnail
+        WebElement Thumbnail = driver.findElement(By.id("motherProfileImage"));
+        Thumbnail.sendKeys("C:/Users/DELL/Downloads/image.jpg");
+        driver.findElement(By.xpath("(//button[@class='btn-save ng-star-inserted'])[2]")).click();
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//h2[@id='swal2-title']")));
+        driver.findElement(By.xpath("//h2[@id='swal2-title']"));
+        WebElement submit = driver.findElement(By.xpath("//button[normalize-space()='OK']"));
+        if (submit.isEnabled()) {
+            submit.click();
+            System.out.println("Test Passed : User able to saved Testimonial successfully");
+        } else {
+            System.out.println("Test Failed : User unable to saved Testimonial successfully");
+        }
+    }
+        @Test(priority = 4)
+        public void ActionDelete(){
+            WebElement filterElement = driver.
+                    findElement(By.xpath("(//a[@ptooltip='Delete Data'])[1]"));
+            Actions actions = new Actions(driver);
+            actions.moveToElement(filterElement).click().perform();
+
+            driver.findElement(By.xpath("//button[contains(text(),'Yes, delete it!')]")).click();
+            wait.until(ExpectedConditions
+                    .visibilityOfElementLocated
+                            (By.xpath("(//div[@id='swal2-content'])[1]")));
+            driver.findElement(By.xpath("//button[contains(text(),'OK')]")).click();
+        }
+    @Test(priority = 5)
+    public void totalTestimonials() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.xpath("//div[@class='card-block card-block1']")));
+        WebElement totalTestimonials = driver.findElement
+                (By.xpath("//div[@class='card-block card-block1']"));
+        String totalTestimonial = totalTestimonials.getText();
+        System.out.println("Total Students:"+ totalTestimonial);
+    }
+    @Test(priority = 8)
+    public void Viewdetail() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        driver.findElement(By.xpath("//a[contains(text(),'New Testimonial')]")).click();
+        driver.findElement(By.xpath("(//button[contains(.,'Update')])[2]")).click();
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated
+                        (By.xpath("(//div[@id='swal2-content'])[1]")));
+        driver.findElement(By.xpath("//button[contains(text(),'OK')]")).click();
+    }
 
     }
 
 
-    }
+

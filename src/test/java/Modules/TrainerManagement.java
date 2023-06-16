@@ -52,7 +52,7 @@ public class TrainerManagement {
 	 
 	    @Test(priority = 3)
 	    public void TrainerManagement() throws InterruptedException {
-	    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    	  wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 	    	WebElement trainerManagement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Trainer Management')]")));
 			trainerManagement.click();
 	    }
@@ -125,7 +125,7 @@ public class TrainerManagement {
 				driver.findElement(By.xpath("//button[contains(text(),'Yes, delete it!')]")).click();
 				 wait.until(ExpectedConditions
 							.visibilityOfElementLocated
-									(By.xpath("//*[contains(text(),'Trainer deleted successfully.)]")));
+									(By.xpath("//*[contains(text(),'Trainer deleted successfully.')]")));
 				 driver.findElement(By.xpath("//*[contains(text(),'OK']")).click();
 
 	    }
