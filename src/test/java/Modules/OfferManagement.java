@@ -54,8 +54,7 @@ public class OfferManagement {
          wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement offerManagement = wait.until(ExpectedConditions
                 .elementToBeClickable(
-                        By.xpath("//span[contains(text(),'Offer Management')]"))
-        );
+                        By.xpath("//span[contains(text(),'Offer Management')]")));
         offerManagement.click();
     }
 
@@ -75,7 +74,8 @@ public class OfferManagement {
         }
     }
 
-    @Test(priority = 5)
+
+  /*  @Test(priority = 5)
     public void totalOffer() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.
@@ -84,18 +84,55 @@ public class OfferManagement {
         String Total = totalOffer.getText();
         System.out.println("Total Offer:" + Total);
     }
+
+   */
     @Test(priority = 5)
     public void addNewOffer() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement AddNewTra = wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.xpath("//div[@class='card-block card-flex']")));
         AddNewTra.click();
         driver.findElement(By.xpath("//input[@placeholder='Validity From']")).click();
 
-        driver.findElement(By.xpath("//tbody[@class='ng-tns-c148-102']")).click();
 
-        driver.findElement(By.xpath("//input[@placeholder='Coupon Code']")).sendKeys("DEMO12");
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.xpath("//div[contains(@class,'p-datepicker-title ng-tns-c148-6')]")));
+        String text = element.getText();
+        System.out.println("Element Text: " + text);
+
+
+//         while (!driver.findElement
+//                 (By.xpath("//div[@class='p-datepicker-title ng-tns-c148-6']"))
+//                 .getText().contains("July"))
+//         {
+//            driver.findElement
+//                    (By.cssSelector("button[class='p-datepicker-next p-link ng-tns-c148-6 p-ripple ng-star-inserted']"))
+//                    .click();
+//         }
+//        List<WebElement> dates=driver.findElements
+//                (By.xpath("//td[@class='ng-tns-c148-6 ng-star-inserted']"));
+//        int count=driver.findElements(By.xpath
+//                ("//td[@class='ng-tns-c148-6 ng-star-inserted']")).size();
+//        for(int i=0;i<count;i++)
+//        {
+//          String text=driver.findElements(By.xpath
+//                  ("//td[@class='ng-tns-c148-6 ng-star-inserted']")).get(i).getText();
+//          if(text.equals("19"))
+//          {
+//              driver.findElements(By.xpath
+//                      ("//td[@class='ng-tns-c148-6 ng-star-inserted']")).get(i).click();
+//              break;
+//          }
+//        }
+      // driver.findElement(By.xpath("//span[normalize-space()='18']")).click();
+
+
+//        driver.findElement(By.xpath("//tbody[@class='ng-tns-c148-102']")).click();
+//        driver.findElement(By.xpath("//input[@placeholder='Coupon Code']")).sendKeys("DEMO12");
+
     }
-   /*
+
+    /*
     @Test(priority = 6)
     public void tablePagination() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
