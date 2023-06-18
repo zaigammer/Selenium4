@@ -29,8 +29,6 @@ public class Login {
 
     }
 
- 
-
     @Test(priority = 1)
     public void Test_verifyTitle() {
         //    driver.get("https://www.example.com");
@@ -39,8 +37,6 @@ public class Login {
         String expectedTitle = "Simple Login | Mega Able Angular 7+";
         Assert.assertEquals(actualTitle, expectedTitle);
     }
-
- 
 
     @Test(priority = 2)
     public void Test_LoginIn() {
@@ -57,8 +53,6 @@ public class Login {
             System.out.println("Test Failed : User unable to login");
         }
     }
-
- 
 
     @Test(priority = 3)     
     public void Test_Dashboard_SalesStatistics() {

@@ -17,9 +17,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class TransactionManagement {
-	
-	static String Month ="September";
-	static String day = "10";
+
+    static String Month ="September";
+    static String day = "10";
     static WebDriver driver;
     static WebDriverWait wait;
 
@@ -29,8 +29,8 @@ public class TransactionManagement {
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	}
-    
+    }
+
     @Test(priority = 1)
     public void verifyTitle() {
         //    driver.get("https://www.example.com");
@@ -59,19 +59,41 @@ public class TransactionManagement {
 
     @Test(priority = 3)
     public void transactions() throws InterruptedException {
-    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	WebElement Transaction = wait.until(ExpectedConditions.elementToBeClickable
+         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement Transaction = wait.until(ExpectedConditions.elementToBeClickable
                 (By.xpath("//span[contains(text(),'Transactions')]")));
-    	Transaction.click();
-   /* 	//FilterBy
+        Transaction.click();
+   	//FilterBy
     	WebElement filter=wait.until(ExpectedConditions.elementToBeClickable
                 (By.xpath("//i[@class='icon-filter filtericon']")));
     	filter.click();
-        //FromDate and ToDate
+
+        WebElement FromDate = wait.until(ExpectedConditions.elementToBeClickable
+                (By.xpath("//input[@placeholder='From Date']")));
+        FromDate.click();
+
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.xpath("//div[@class='p-datepicker-title ng-tns-c148-20']")));
+        String text = element.getText();
+        System.out.println("Element Text: " + text);
+
+        while (!driver.findElement
+                        (By.xpath("//div[@class='p-datepicker-title ng-tns-c148-20']"))
+
+                .getText().contains("July"))
+        {
+            driver.findElement
+                            (By.cssSelector("button[class='p-datepicker-next p-link ng-tns-c148-20 p-ripple ng-star-inserted']"))
+                    .click();
+        }
+
+
+
+     /*   //FromDate and ToDate
     	WebElement FromDate = wait.until(ExpectedConditions.elementToBeClickable
                 (By.xpath("//input[@placeholder='From Date']")));
     	FromDate.click();
-   
+
        	String text = driver.findElement
                 (By.xpath("//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']")).
                 getText();
@@ -86,18 +108,18 @@ public class TransactionManagement {
     	    } else {
     	    		WebElement Forward = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='p-datepicker-next p-link ng-tns-c148-12 p-ripple ng-star-inserted']")));
         	        Forward.click();
-    	    	
-    	        continue; // Add the break statement here to exit the loop after clicking the forward butto   
+
+    	        continue; // Add the break statement here to exit the loop after clicking the forward butto
     	}}
     	WebElement Date = wait.until(ExpectedConditions.elementToBeClickable
                 (By.xpath("//tbody[@class='ng-tns-c148-12']//td[contains(., " + day + ")]")));
     	Date.click();
   */
-    	}
+    }
 
     @Test(priority = 4)
     public void viewdetail() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+     /*   wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         driver.findElement(By.xpath("(//a[@class='underLineText pointerClass'])[1]")).click();
 
         WebElement orderDetails = wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -105,7 +127,7 @@ public class TransactionManagement {
         String orderDetailsText = orderDetails.getText();
         System.out.println(orderDetailsText);
         Assert.assertEquals(orderDetailsText, orderDetailsText);
-  /*       //Download Invoice
+        //Download Invoice
         WebElement downloader= driver.findElement(By.xpath("//p[@class='m-t-10 pointerClass reciepttext']"));
         if (downloader.isEnabled()) {
             downloader.click();
@@ -118,4 +140,3 @@ public class TransactionManagement {
 
 
 }
-
