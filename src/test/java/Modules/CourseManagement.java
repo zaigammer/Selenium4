@@ -141,6 +141,7 @@ public class CourseManagement {
         driver.findElement(By.xpath("//input[@placeholder='Sequence Number']")).sendKeys("1");
         driver.findElement(By.xpath("//button[contains(text(),'Add Lecture')]")).click();
         driver.findElement(By.xpath("(//button[contains(.,'Save')])[2]")).click();
+
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.xpath("(//div[@id='swal2-content'])[1]")));
         driver.findElement(By.xpath("(//div[@id='swal2-content'])[1]"));

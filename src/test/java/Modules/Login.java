@@ -15,7 +15,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-
 public class Login {
     static WebDriver driver;
     static WebDriverWait wait;
@@ -29,8 +28,6 @@ public class Login {
 
     }
 
- 
-
     @Test(priority = 1)
     public void Test_verifyTitle() {
         //    driver.get("https://www.example.com");
@@ -39,8 +36,6 @@ public class Login {
         String expectedTitle = "Simple Login | Mega Able Angular 7+";
         Assert.assertEquals(actualTitle, expectedTitle);
     }
-
- 
 
     @Test(priority = 2)
     public void Test_LoginIn() {
@@ -87,7 +82,8 @@ public class Login {
 
         @Test(priority = 6)     
         public void Test_Dashboard_NewRegistrations_DataWise() {
-            WebElement NewRegistrations = driver.findElement(By.xpath("(//canvas[@class='chartjs-render-monitor'])[2]"));
+            WebElement NewRegistrations = driver.findElement(By.xpath
+                    ("(//canvas[@class='chartjs-render-monitor'])[2]"));
             String graphText = NewRegistrations.getText();    
             System.out.println("NewRegistrations graph: " + graphText);
 
@@ -97,14 +93,16 @@ public class Login {
         @Test(priority = 7)     
         public void Test_Dashboard_Registrations() {
      
-        	WebElement ele = driver.findElement(By.xpath("//p-chart[@type='horizontalBar']//canvas[@class='chartjs-render-monitor']"));
+        	WebElement ele = driver.findElement(By.xpath
+                    ("//p-chart[@type='horizontalBar']//canvas[@class='chartjs-render-monitor']"));
         	Actions action = new Actions(driver);
         	action.moveToElement(ele).perform();
         	String dataValue = ele.getAttribute("class");
         	System.out.println("Registrations Location Wise: " + dataValue);
         	
              
-        	//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p-chart[@type='horizontalBar']//canvas[@class='chartjs-render-monitor']")));
+        	//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+            // ("//p-chart[@type='horizontalBar']//canvas[@class='chartjs-render-monitor']")));
 //            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
 //            jsExecutor.executeScript("arguments[0].click()", chartElement);
 //            String dataValue = (String) jsExecutor.executeScript("return myChart.getDataValue()");
@@ -116,16 +114,12 @@ public class Login {
 
         @Test(priority = 8)     
         public void Test_Dashboard_Registrations_GenderWise() {
-            WebElement NewRegistrations = driver.findElement(By.xpath("//p-chart[@type='pie']//canvas[@class='chartjs-render-monitor']"));
+            WebElement NewRegistrations = driver.findElement(By.xpath
+                    ("//p-chart[@type='pie']//canvas[@class='chartjs-render-monitor']"));
 
-//            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-//            String chartData = (String) jsExecutor.executeScript("return arguments[0].chartData;", NewRegistrations);
-//            System.out.println("New Registrations Gender Wise: " + chartData);
-            
             String graphText = NewRegistrations.getText();    
             System.out.println("NewRegistrations graph: " + graphText);
-            
-          //p-chart[@type='pie']//canvas[@class='chartjs-render-monitor']
+
         }
         @Test(priority = 9)     
         public void Test_admin() {
@@ -133,12 +127,12 @@ public class Login {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'admin')]")));
             driver.findElement(By.xpath("//span[contains(text(),'admin')]")).click();
             // Check if the welcome message is displayed
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Company Profile')]")));
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath
+                    ("//a[contains(text(),'Company Profile')]")));
             element.click();
 
- 
-
-            WebElement update = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Update')])[1]")));
+            WebElement update = wait.until(ExpectedConditions.elementToBeClickable(By.xpath
+                    ("(//button[contains(text(),'Update')])[1]")));
             update.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
@@ -159,63 +153,5 @@ public class Login {
             WebElement logout = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Logout')]")));
             logout.click();
         }
-
-        // Execute JavaScript to retrieve chart data
-//        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-//        String chartData = (String) jsExecutor.executeScript("return arguments[0].chartData;", graphElement);
-//        System.out.println("Chart Data: " + chartData);
-
-//        String xData = graphElement.getAttribute("data-x");
-//        String yData = graphElement.getAttribute("data-y");
-//        //print data in console
-
-//        System.out.println("X Data: " + xData);
-//        System.out.println("Y Data: " + yData);
-//    
-
-
-
-    /*
-
- 
-
-
-    }
-
-    */
-
-/*
-    @Test(priority = 4
-    public void Logout() {
-        driver.findElement(By.xpath("//div[@class='cursor-pointer']")).click();
-        //    driver.findElement(By.xpath("//div[@class='py-2 cursor-pointer '][3]")).click(); 
-            WebElement logout=driver.findElement(By.xpath("//div[@class='py-2 cursor-pointer '][3]"));
-            if (logout.isDisplayed() && logout.isEnabled()) {
-                logout.click();
-                System.out.println("Test Passed:User is able to logout");
-            } else {
-                System.out.println("Test failed:User is unable to logout");
-            }    
-    }
-*/
-/*
-    @Test(priority = 4)
-    public void Location() {
-        wait = new WebDriverWait(driver, 10);    
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Doctor Desk')]")));
-      driver.findElement(By.xpath("//div[contains(text(),'Doctor Desk')]")).click();    
-
- 
-
-      driver.findElement(By.xpath("(//div[@id='patient-list-item'])[1]")).click();
-    Actions action = new Actions(driver);
-    WebElement live=driver.findElement(By.xpath("(//div[@id='patient-list-item'])[1]"));
-    action.moveToElement(live).click().build().perform();
-
- 
-
-
-    }
-*/
 
 }

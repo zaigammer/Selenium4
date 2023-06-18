@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -54,8 +55,7 @@ public class OfferManagement {
          wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement offerManagement = wait.until(ExpectedConditions
                 .elementToBeClickable(
-                        By.xpath("//span[contains(text(),'Offer Management')]"))
-        );
+                        By.xpath("//span[contains(text(),'Offer Management')]")));
         offerManagement.click();
     }
 
@@ -75,7 +75,8 @@ public class OfferManagement {
         }
     }
 
-    @Test(priority = 5)
+
+  /*  @Test(priority = 5)
     public void totalOffer() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.
@@ -84,18 +85,93 @@ public class OfferManagement {
         String Total = totalOffer.getText();
         System.out.println("Total Offer:" + Total);
     }
+
+   */
     @Test(priority = 5)
-    public void addNewOffer() {
+    public void addNewOffer() throws InterruptedException {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         WebElement AddNewTra = wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.xpath("//div[@class='card-block card-flex']")));
         AddNewTra.click();
+       //Validity From
         driver.findElement(By.xpath("//input[@placeholder='Validity From']")).click();
-
-        driver.findElement(By.xpath("//tbody[@class='ng-tns-c148-102']")).click();
-
-        driver.findElement(By.xpath("//input[@placeholder='Coupon Code']")).sendKeys("DEMO12");
+        // Scroll to the desired month in the datepicker
+        while (!driver.findElement(By.xpath(
+                        "//div[contains(@class,'ng-trigger ng-trigger-overlayAnimation')]" +
+                                "//div[contains(@class,'p-datepicker-header')]//div"))
+                .getText().contains("July")) {
+            driver.findElement(By.xpath("//button[contains(@class,'p-datepicker-next')]")).click();
+        }
+        // Select the desired date from the datepicker
+        List<WebElement> dates = driver.findElements(By.xpath(
+                "//div[contains(@class,'p-datepicker-calendar-container')]//tbody//td"));
+        for (WebElement date : dates) {
+            String text = date.getText();
+            if (text.equalsIgnoreCase("2")) {
+                date.click();
+                break;
+            }
+        }
+        //Validity Till
+        Thread.sleep(2000);
+      driver.findElement(By.xpath("//input[@placeholder='Validity Till']")).click();
+        while (!driver.findElement(By.xpath(
+                        "//div[contains(@class,'ng-trigger ng-trigger-overlayAnimation')]" +
+                                "//div[contains(@class,'p-datepicker-header')]//div"))
+                .getText().contains("July")) {
+            driver.findElement(By.xpath("//button[contains(@class,'p-datepicker-next')]")).click();
+        }
+        // Select the desired date from the datepicker
+        List<WebElement> Tilldates = driver.findElements(By.xpath(
+                "//div[contains(@class,'p-datepicker-calendar-container')]//tbody//td"));
+        for (WebElement date : Tilldates) {
+            String text = date.getText();
+            if (text.equalsIgnoreCase("10")) {
+                date.click();
+                break;
+            }
+        }
+       driver.findElement(By.xpath("//input[@placeholder='Coupon Code']")).sendKeys("DEMO12");
+        driver.findElement(By.xpath("//input[@placeholder='Offer Name']")).sendKeys("DEMO");
+       //discount in percentage
+       driver.findElement(By.xpath("//span[contains(@class,'p-dropdown-label')]")).click();
+       driver.findElement(By.xpath("//li[@aria-label='False']")).click();
+       driver.findElement(By.xpath("//input[@placeholder='Discount in Amount']")).sendKeys("100");
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//div[contains(@class,'searchWrap')]//button")));
+        driver.findElement(By.xpath("//div[contains(@class,'searchWrap')]//button")).click();
+        WebElement submit = driver.findElement(By.xpath("(//button[normalize-space()='OK'])[1]"));
+        if (submit.isEnabled()) {
+            submit.click();
+            System.out.println("Test Passed : User is able to saved offer successfully");
+        } else {
+            System.out.println("Test Failed : User unable to saved offer successfully");
+        }
     }
-   /*
+
+    @Test(priority = 6)
+    public void ActionDelete() {
+        WebElement filterElement = driver.
+                findElement(By.xpath("(//a[@ptooltip='Delete Data'])[1]"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(filterElement).click().perform();
+
+        driver.findElement(By.xpath("//button[contains(text(),'Yes, delete it!')]")).click();
+
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated
+                        (By.xpath("(//div[@id='swal2-content'])[1]")));
+        driver.findElement(By.xpath("(//div[@id='swal2-content'])[1]"));
+        WebElement delete = driver.findElement(By.xpath("(//button[normalize-space()='OK'])[1]"));
+        if (delete.isEnabled()) {
+            delete.click();
+            System.out.println("Test Passed : User able to deleted course successfully");
+        } else {
+            System.out.println("Test Failed : User unable to deleted course successfully");
+        }
+    }
+
+
     @Test(priority = 6)
     public void tablePagination() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -110,7 +186,7 @@ public class OfferManagement {
         // Compare the number of records displayed with the expected value of 10
         Assert.assertEquals(numberOfRecords, 10);
     }
-    */
+
 
 
 
