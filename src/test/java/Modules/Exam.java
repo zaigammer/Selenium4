@@ -94,8 +94,22 @@ public class Exam {
         String MaxiMarks = MaximumMarks.getText();
         System.out.println("Card:" + MaxiMarks);
     }
-
     @Test(priority = 6)
+    public void tablePagination() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement recordsPerPageDropdown = driver.findElement(By.xpath("(//div[@role='button'])[1]"));
+        recordsPerPageDropdown.click();
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//li[@aria-label='10'])[1]")));
+        dropdown.click();
+        Thread.sleep(1000);
+        List<WebElement> rows = driver.findElements(By.xpath("//tbody[@class='p-datatable-tbody']//tr"));
+        int numberOfRecords = rows.size();
+        // Compare the number of records displayed with the expected value of 10
+        Assert.assertEquals(numberOfRecords, 10);
+
+    }
+
+    @Test(priority = 7)
     public void Test_filter() {
         // Filter
         WebElement filterElement = driver.findElement(By.xpath("//i[@class='icon-filter filtericon']"));
@@ -107,21 +121,7 @@ public class Exam {
         driver.findElement(By.xpath("//button[contains(text(),'Search')]")).click();
     }
 
-    /*
-        @Test(priority = 7)
-        public void tablePagination() throws InterruptedException {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-            WebElement recordsPerPageDropdown = driver.findElement(By.xpath("(//div[@role='button'])[1]"));
-            recordsPerPageDropdown.click();
-            WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//li[@aria-label='10'])[1]")));
-            dropdown.click();
-            Thread.sleep(1000);
-            List<WebElement> rows = driver.findElements(By.xpath("//tbody[@class='p-datatable-tbody']//tr"));
-            int numberOfRecords = rows.size();
-            // Compare the number of records displayed with the expected value of 10
-            Assert.assertEquals(numberOfRecords, 10);
-        }*/
-    @Test(priority = 7)
+    @Test(priority = 8)
     public void Action() {
         driver.findElement(By.xpath("(//i[@class='fa fa-eye'])[2]")).click();
         WebElement recordsPerPageDropdown = driver.findElement(By.xpath("(//div[@role='button'])[1]"));
@@ -138,7 +138,7 @@ public class Exam {
         WebElement element = driver.findElement(By.xpath("//u[contains(.,'Back')]"));
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().perform();
-     WebElement download=  driver.findElement(By.xpath("(//i[@class='fa fa-download'])[2]"));
+        WebElement download = driver.findElement(By.xpath("(//i[@class='fa fa-download'])[2]"));
         if (download.isEnabled()) {
             download.click();
             System.out.println("Test Passed : User able to click on Download");
@@ -146,8 +146,6 @@ public class Exam {
             System.out.println("Test Failed : User unable to click on Download");
         }
     }
-
-
 
 }
 

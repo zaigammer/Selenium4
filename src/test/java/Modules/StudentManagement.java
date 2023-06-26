@@ -1,6 +1,7 @@
 package Modules;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -92,7 +93,7 @@ public class StudentManagement {
         System.out.printf("Total Students:" + total);
 
     }
-/*
+
     @Test(priority = 6)
     public void Test_tablePagination() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -105,7 +106,7 @@ public class StudentManagement {
         int numberOfRecords = rows.size();
         // Compare the number of records displayed with the expected value of 10
         Assert.assertEquals(numberOfRecords, 10);
-    }*/
+    }
 
     @Test(priority = 7)
     public void Test_filter() {
@@ -125,23 +126,34 @@ public class StudentManagement {
         driver.findElement(By.xpath("//a[contains(text(),'Adityakumar Manojkumar Agarwal')]")).click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,350)", "");
-
         String[] labels = { "Name", "Email Address", "Mobile Number", "Designation", "Occupation","Date Of Birth",
                 "Location","Gender","Work Experience","Qualification","Resume Uploaded","About me","Company Name","Billing Address" };
-
-        for (String viewdetail : labels) {
-            WebElement element = driver.findElement(By.xpath("(//p[contains(.,'" + viewdetail + "')])[1]"));
+        for (String label : labels) {
+            String xpathExpression = "(//p[contains(.,'" + label + "')])[1]";
+            WebElement element = driver.findElement(By.xpath(xpathExpression));
             String text = element.getText();
-            Assert.assertEquals(text, viewdetail);
-            System.out.println(viewdetail + ": " + text);
-            //   System.out.println(driver.findElement(By.xpath("(//p[contains(.,'Mobile Number')])[1]")).getText());
+            Assert.assertEquals(text, label);
+            System.out.println(label + ": " + text);
+        }
 
+            // Click on "Enrolled Courses"
             driver.findElement(By.xpath("//span[contains(.,'Enrolled Courses')]")).click();
-            wait.until(ExpectedConditions.visibilityOfElementLocated
-                    (By.xpath("//a[@id='p-accordiontab-0']"))).click();
+// Wait for "View" element to be visible, then click on it
+            WebElement viewElement = wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.xpath("//a[@id='p-accordiontab-0']")));
+            viewElement.click();
+            viewElement.click();
+            driver.findElement(By.xpath("//span[contains(text(),'Receipt')]")).click();
+        WebElement downloader= driver.findElement(By.xpath("//i[@class='fa fa-download']"));
+        if (downloader.isEnabled()) {
+            downloader.click();
+            System.out.println("Test Passed : User able to download Receipt");
+        } else {
+            System.out.println("Test Failed : User unable to download Receipt");
+        }
+            driver.findElement(By.xpath("//span[contains(text(),'Cart')]")).click();
 
         }
     }
 
 
-}

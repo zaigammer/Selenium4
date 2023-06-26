@@ -116,9 +116,13 @@ public class Login {
         public void Test_Dashboard_Registrations_GenderWise() {
             WebElement NewRegistrations = driver.findElement(By.xpath
                     ("//p-chart[@type='pie']//canvas[@class='chartjs-render-monitor']"));
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+            Actions actions = new Actions(driver);
+            actions.moveToElement(NewRegistrations).perform();
+            String chartData = (String) jsExecutor.executeScript
+                    ("return arguments[0].getData();", NewRegistrations);
+            System.out.println("Chart data: " + chartData);
 
-            String graphText = NewRegistrations.getText();    
-            System.out.println("NewRegistrations graph: " + graphText);
 
         }
         @Test(priority = 9)     

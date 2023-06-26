@@ -66,59 +66,55 @@ public class TransactionManagement {
                 (By.xpath("//span[contains(text(),'Transactions')]")));
     	Transaction.click();
    	//FilterBy
-    	WebElement filter=wait.until(ExpectedConditions.elementToBeClickable
+        // Click on the filter icon
+        WebElement filter = wait.until(ExpectedConditions.elementToBeClickable
                 (By.xpath("//i[@class='icon-filter filtericon']")));
-    	filter.click();
-        //FromDate and ToDate
-//    	WebElement FromDate = wait.until(ExpectedConditions.elementToBeClickable
-//                (By.xpath("//input[@placeholder='From Date']")));
-//    	FromDate.click();
-//        // Scroll to the desired month in the datepicker
-//        Select dropdown = new Select(driver.findElement(By.xpath
-//                ("//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']")));
-//        while (!dropdown.getFirstSelectedOption().getText().equals("July")) {
-//            driver.findElement(By.xpath
-//                    ("//button[contains(@class,'p-datepicker-next')]")).click();
-//            dropdown = new Select(driver.findElement(By.xpath
-//                    ("//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']")));
-//        }
-//        // Select the desired date from the datepicker
-//        List<WebElement> dates = driver.findElements(By.xpath(
-//                "//div[contains(@class,'p-datepicker-calendar-container')]//tbody//td"));
-//        for (WebElement date : dates) {
-//            String text = date.getText();
-//            if (text.equalsIgnoreCase("25")) {
-//                date.click();
-//                break;
-//            }
-//        }
+        filter.click();
 
-        //TillDate
-        WebElement ToDate = wait.until(ExpectedConditions.elementToBeClickable
-                (By.xpath("//div//p-calendar[@placeholder='Till Date']")));
-        ToDate.click();
-        System.out.println(driver.findElement(By.xpath
-                ("//div//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']")).getText());
-        // Scroll to the desired month in the datepicker
-        Thread.sleep(2000);
-        Select months = new Select(driver.findElement(By.xpath
-                ("//div//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']")));
-        while (!months.getFirstSelectedOption().getText().equals("July")) {
-            driver.findElement(By.xpath
-                    ("//button[contains(@class,'p-datepicker-next')]")).click();
-            months = new Select(driver.findElement(By.xpath
-                    ("//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']")));
-        }
-        // Select the desired date from the datepicker
-        List<WebElement> Tilldates = driver.findElements(By.xpath(
-                "//div[contains(@class,'p-datepicker-calendar-container')]//tbody//td"));
-        for (WebElement date : Tilldates) {
-            String text = date.getText();
-            if (text.equalsIgnoreCase("25")) {
-                date.click();
+// Select From Date
+        WebElement fromDate = wait.until(ExpectedConditions.elementToBeClickable(By.xpath
+                ("//input[@placeholder='From Date']")));
+        fromDate.click();
+
+// Scroll to the desired month in the datepicker
+        Select fromMonthDropdown = new Select(driver.findElement(By.xpath
+                ("//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']")));
+        fromMonthDropdown.selectByVisibleText("June");
+
+// Select the desired date from the datepicker
+        List<WebElement> fromDateOptions = driver.findElements(By.xpath
+                ("//div[contains(@class,'p-datepicker-calendar-container')]//tbody//td"));
+        for (WebElement option : fromDateOptions) {
+            String text = option.getText();
+            if (text.equalsIgnoreCase("12")) {
+                option.click();
                 break;
             }
         }
+
+// Select Till Date
+        Thread.sleep(2000); // Add explicit wait if required
+        WebElement toDate = wait.until(ExpectedConditions.elementToBeClickable(By.xpath
+                ("//div//p-calendar[@placeholder='Till Date']")));
+        toDate.click();
+
+// Scroll to the desired month in the datepicker
+        Select tillMonthDropdown = new Select(driver.findElement(By.xpath
+                ("//select[contains(@class, 'p-datepicker-month')]")));
+        tillMonthDropdown.selectByVisibleText("June");
+
+// Select the desired date from the datepicker
+        List<WebElement> tillDateOptions = driver.findElements(By.xpath
+                ("//div[contains(@class,'p-datepicker-calendar-container')]//tbody//td"));
+        for (WebElement option : tillDateOptions) {
+            String text = option.getText();
+            if (text.equalsIgnoreCase("14")) {
+                option.click();
+                break;
+            }
+        }
+        wait.until(ExpectedConditions.elementToBeClickable
+                (By.xpath("//button[contains(text(),'Search')]"))).click();
 
    /*     	String text = driver.findElement
                 (By.xpath("//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']")).
@@ -145,8 +141,9 @@ public class TransactionManagement {
 
     @Test(priority = 4)
     public void viewdetail() {
-   /*       wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        driver.findElement(By.xpath("(//a[@class='underLineText pointerClass'])[1]")).click();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.elementToBeClickable
+                (By.xpath("(//a[@class='underLineText pointerClass'])[1]"))).click();
 
         WebElement orderDetails = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//div[@class='row orderDetailsWrap']")));
@@ -161,7 +158,7 @@ public class TransactionManagement {
         } else {
             System.out.println("Test Failed : User unable to download invoice");
         }
-   */
+
     }
 
 }

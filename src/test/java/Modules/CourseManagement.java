@@ -124,12 +124,17 @@ public class CourseManagement {
                 sendKeys("Exclusive mentorship by industry leaders");
         driver.findElement(By.xpath("//button[@class='btn-save m-l-20']")).click();
         //Exam Duration min
-        driver.findElement(By.xpath("//input[@placeholder='Duration in minutes']")).sendKeys("60");
+        driver.findElement(By.xpath("//input[@placeholder='Duration in minutes']"))
+                .sendKeys("60");
         //Exam No of Questions
-        driver.findElement(By.xpath("//input[@placeholder='No of questions']")).sendKeys("15");
-        driver.findElement(By.xpath("//input[@placeholder='MRP : Strike out​​']")).sendKeys("1000");
-        driver.findElement(By.xpath("//input[@placeholder='Sales Price']")).sendKeys("100");
-        driver.findElement(By.xpath("//input[@placeholder='Course Duration in Hrs']")).sendKeys("1");
+        driver.findElement(By.xpath("//input[@placeholder='No of questions']"))
+                .sendKeys("15");
+        driver.findElement(By.xpath("(//input[@id='first'])[7]"))
+                .sendKeys("1000");
+        driver.findElement(By.xpath("//input[@placeholder='Sales Price']"))
+                .sendKeys("100");
+        driver.findElement(By.xpath("//input[@placeholder='Course Duration in Hrs']"))
+                .sendKeys("1");
         //Add Brochure
         WebElement Brochure = driver.findElement(By.id("brochureUpload"));
         Brochure.sendKeys("C:/Users/DELL/Downloads/Tools for Testers.pdf");
@@ -137,7 +142,8 @@ public class CourseManagement {
         //select chapters
         driver.findElement(By.xpath("//div[@role='button']")).click();
         wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By.xpath("//li[@aria-label='Administration in Real Estate']"))).click();
+                visibilityOfElementLocated(By.xpath("//li[@aria-label='Administration in Real Estate']")))
+                .click();
         driver.findElement(By.xpath("//input[@placeholder='Sequence Number']")).sendKeys("1");
         driver.findElement(By.xpath("//button[contains(text(),'Add Lecture')]")).click();
         driver.findElement(By.xpath("(//button[contains(.,'Save')])[2]")).click();

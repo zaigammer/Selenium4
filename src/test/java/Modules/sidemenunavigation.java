@@ -53,7 +53,8 @@ public class sidemenunavigation {
     public void navigatetosidemenu() {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement sideMenu = driver.findElement(By.xpath("//li[contains(@class,'ng-tns-c164-0 ng-star-inserted')]"));
+        WebElement sideMenu = driver.findElement
+                (By.xpath("//li[contains(@class,'ng-tns-c164-0 ng-star-inserted')]"));
         // Adjust the XPath to target your side menu element
         js.executeScript("arguments[0].scrollIntoView(true);", sideMenu);
 
