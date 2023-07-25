@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Selenium4"
+           tests="7"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="13.615">
+    <properties></properties>
+
+
+
+            <testcase
+                name="loginIn"
+                time="0.386"
+                classname="Modules.CourseManagement">
+            </testcase>
+            <testcase
+                name="Test_verifyTitle"
+                time="3.871"
+                classname="Modules.CourseManagement">
+            </testcase>
+            <testcase
+                name="search"
+                time="0.598"
+                classname="Modules.CourseManagement">
+            </testcase>
+            <testcase
+                name="addNewCourse"
+                time="5.091"
+                classname="Modules.CourseManagement">
+            </testcase>
+            <testcase
+                name="update"
+                time="1.788"
+                classname="Modules.CourseManagement">
+            </testcase>
+            <testcase
+                name="courseManagement"
+                time="1.781"
+                classname="Modules.CourseManagement">
+            </testcase>
+            <testcase
+                name="totalCourses"
+                time="0.100"
+                classname="Modules.CourseManagement">
+            </testcase>
+</testsuite>

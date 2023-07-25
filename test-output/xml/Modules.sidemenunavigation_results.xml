@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Selenium4"
+           tests="3"
+           failures="1"
+           errors="0"
+           skipped="0"
+           time="5.537">
+    <properties></properties>
+
+            <testcase
+                name="navigatetosidemenu"
+                time="1.821"
+                classname="Modules.sidemenunavigation">
+
+            <failure type="java.lang.AssertionError" message="expected [Testimonial] but found []">
+                <![CDATA[java.lang.AssertionError: expected [Testimonial] but found []
+                org.testng.Assert.fail(Assert.java:110)org.testng.Assert.failNotEquals(Assert.java:1413)org.testng.Assert.assertEqualsImpl(Assert.java:149)org.testng.Assert.assertEquals(Assert.java:131)org.testng.Assert.assertEquals(Assert.java:655)org.testng.Assert.assertEquals(Assert.java:665)Modules.sidemenunavigation.navigatetosidemenu(sidemenunavigation.java:77)java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)java.base/java.lang.reflect.Method.invoke(Method.java:568)org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:135)org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:673)org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:220)org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:945)org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:193)org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)java.base/java.util.ArrayList.forEach(ArrayList.java:1511)org.testng.TestRunner.privateRun(TestRunner.java:808)org.testng.TestRunner.run(TestRunner.java:603)org.testng.SuiteRunner.runTest(SuiteRunner.java:429)org.testng.SuiteRunner.runSequentially(SuiteRunner.java:423)org.testng.SuiteRunner.privateRun(SuiteRunner.java:383)org.testng.SuiteRunner.run(SuiteRunner.java:326)org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)org.testng.TestNG.runSuitesSequentially(TestNG.java:1249)org.testng.TestNG.runSuitesLocally(TestNG.java:1169)org.testng.TestNG.runSuites(TestNG.java:1092)org.testng.TestNG.run(TestNG.java:1060)com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </failure>
+    </testcase>
+
+
+            <testcase
+                name="Test_verifyTitle"
+                time="3.303"
+                classname="Modules.sidemenunavigation">
+            </testcase>
+            <testcase
+                name="loginIn"
+                time="0.413"
+                classname="Modules.sidemenunavigation">
+            </testcase>
+</testsuite>

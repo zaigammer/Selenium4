@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Selenium4"
+           tests="11"
+           failures="1"
+           errors="0"
+           skipped="10"
+           time="2.004">
+    <properties></properties>
+
+            <testcase
+                name="launch"
+                time="2.000"
+                classname="Modules.Login">
+
+            <failure type="org.openqa.selenium.SessionNotCreatedException" message="session not created: This version of ChromeDriver only supports Chrome version 113
+Current browser version is 115.0.5790.99 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: &apos;4.0.0-alpha-3&apos;, revision: &apos;8c567de6dc&apos;
+System info: host: &apos;DESKTOP-LF9C4GT&apos;, ip: &apos;192.168.68.118&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: driver.version: ChromeDriver
+remote stacktrace: Backtrace:
+	GetHandleVerifier [0x00A38893+48451]
+	(No symbol) [0x009CB8A1]
+	(No symbol) [0x008D5058]
+	(No symbol) [0x008F5D9C]
+	(No symbol) [0x008F1AA3]
+	(No symbol) [0x008F0019]
+	(No symbol) [0x00920798]
+	(No symbol) [0x0092047C]
+	(No symbol) [0x0091A0B6]
+	(No symbol) [0x008F7E08]
+	(No symbol) [0x008F8F2D]
+	GetHandleVerifier [0x00C98E3A+2540266]
+	GetHandleVerifier [0x00CD8959+2801161]
+	GetHandleVerifier [0x00CD295C+2776588]
+	GetHandleVerifier [0x00AC2280+612144]
+	(No symbol) [0x009D4F6C]
+	(No symbol) [0x009D11D8]
+	(No symbol) [0x009D12BB]
+	(No symbol) [0x009C4857]
+	BaseThreadInitThunk [0x755000F9+25]
+	RtlGetAppContainerNamedObjectPath [0x77627BBE+286]
+	RtlGetAppContainerNamedObjectPath [0x77627B8E+238]
+">
+                <![CDATA[org.openqa.selenium.SessionNotCreatedException: session not created: This version of ChromeDriver only supports Chrome version 113
+Current browser version is 115.0.5790.99 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.0.0-alpha-3', revision: '8c567de6dc'
+System info: host: 'DESKTOP-LF9C4GT', ip: '192.168.68.118', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: driver.version: ChromeDriver
+remote stacktrace: Backtrace:
+	GetHandleVerifier [0x00A38893+48451]
+	(No symbol) [0x009CB8A1]
+	(No symbol) [0x008D5058]
+	(No symbol) [0x008F5D9C]
+	(No symbol) [0x008F1AA3]
+	(No symbol) [0x008F0019]
+	(No symbol) [0x00920798]
+	(No symbol) [0x0092047C]
+	(No symbol) [0x0091A0B6]
+	(No symbol) [0x008F7E08]
+	(No symbol) [0x008F8F2D]
+	GetHandleVerifier [0x00C98E3A+2540266]
+	GetHandleVerifier [0x00CD8959+2801161]
+	GetHandleVerifier [0x00CD295C+2776588]
+	GetHandleVerifier [0x00AC2280+612144]
+	(No symbol) [0x009D4F6C]
+	(No symbol) [0x009D11D8]
+	(No symbol) [0x009D12BB]
+	(No symbol) [0x009C4857]
+	BaseThreadInitThunk [0x755000F9+25]
+	RtlGetAppContainerNamedObjectPath [0x77627BBE+286]
+	RtlGetAppContainerNamedObjectPath [0x77627B8E+238]
+
+                java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)org.openqa.selenium.remote.W3CHandshakeResponse.lambda$errorHandler$0(W3CHandshakeResponse.java:62)org.openqa.selenium.remote.HandshakeResponse.lambda$getResponseFunction$0(HandshakeResponse.java:30)org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$1(ProtocolHandshake.java:127)java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)java.base/java.util.Spliterators$ArraySpliterator.tryAdvance(Spliterators.java:1002)java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)java.base/java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:150)java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)java.base/java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:647)org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:129)org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:75)org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:139)org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:576)org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:210)org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:130)org.openqa.selenium.chromium.ChromiumDriver.<init>(ChromiumDriver.java:75)org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:163)org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:150)org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:139)Modules.Login.launch(Login.java:33)java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)java.base/java.lang.reflect.Method.invoke(Method.java:568)org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:135)org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:65)org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:381)org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:319)org.testng.TestRunner.invokeTestConfigurations(TestRunner.java:645)org.testng.TestRunner.beforeRun(TestRunner.java:634)org.testng.TestRunner.run(TestRunner.java:596)org.testng.SuiteRunner.runTest(SuiteRunner.java:429)org.testng.SuiteRunner.runSequentially(SuiteRunner.java:423)org.testng.SuiteRunner.privateRun(SuiteRunner.java:383)org.testng.SuiteRunner.run(SuiteRunner.java:326)org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)org.testng.TestNG.runSuitesSequentially(TestNG.java:1249)org.testng.TestNG.runSuitesLocally(TestNG.java:1169)org.testng.TestNG.runSuites(TestNG.java:1092)org.testng.TestNG.run(TestNG.java:1060)com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </failure>
+    </testcase>
+
+            <testcase
+                name="Test_Dashboard_NewRegistrations"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+            <testcase
+                name="Test_LoginIn"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+            <testcase
+                name="Test_admin"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+            <testcase
+                name="Test_verifyTitle"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+            <testcase
+                name="Test_Dashboard_Registrations_GenderWise"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+            <testcase
+                name="Test_Dashboard_NewRegistrations_DataWise"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+            <testcase
+                name="Test_Dashboard_SalesStatistics"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+            <testcase
+                name="Test_Dashboard_NewEnrollCourse"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+            <testcase
+                name="Test_Dashboard_Registrations"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+            <testcase
+                name="Test_Logout"
+                time="0.0"
+                classname="Modules.Login">
+            </testcase>
+
+</testsuite>

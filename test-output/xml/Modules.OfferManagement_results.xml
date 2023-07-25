@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Selenium4"
+           tests="7"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="15.165">
+    <properties></properties>
+
+
+
+            <testcase
+                name="ActionDelete"
+                time="1.308"
+                classname="Modules.OfferManagement">
+            </testcase>
+            <testcase
+                name="addNewOffer"
+                time="5.383"
+                classname="Modules.OfferManagement">
+            </testcase>
+            <testcase
+                name="offerManagement"
+                time="2.061"
+                classname="Modules.OfferManagement">
+            </testcase>
+            <testcase
+                name="tablePagination"
+                time="1.809"
+                classname="Modules.OfferManagement">
+            </testcase>
+            <testcase
+                name="search"
+                time="0.658"
+                classname="Modules.OfferManagement">
+            </testcase>
+            <testcase
+                name="Test_verifyTitle"
+                time="3.497"
+                classname="Modules.OfferManagement">
+            </testcase>
+            <testcase
+                name="loginIn"
+                time="0.449"
+                classname="Modules.OfferManagement">
+            </testcase>
+</testsuite>

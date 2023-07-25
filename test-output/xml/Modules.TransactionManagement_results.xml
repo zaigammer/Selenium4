@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Selenium4"
+           tests="4"
+           failures="2"
+           errors="0"
+           skipped="0"
+           time="20.729">
+    <properties></properties>
+
+            <testcase
+                name="transactions"
+                time="14.125"
+                classname="Modules.TransactionManagement">
+
+            <failure type="org.openqa.selenium.NoSuchElementException" message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//select[@class=&apos;p-datepicker-month ng-tns-c148-12 ng-star-inserted&apos;]&quot;}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;4.0.0-alpha-3&apos;, revision: &apos;8c567de6dc&apos;
+System info: host: &apos;DESKTOP-LF9C4GT&apos;, ip: &apos;192.168.68.118&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Users\DELL\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:53288}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cd546083f714255f0daf9d394a2667b7
+*** Element info: {Using=xpath, value=//select[@class=&apos;p-datepicker-month ng-tns-c148-12 ng-star-inserted&apos;]}">
+                <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']"}
+  (Session info: chrome=114.0.5735.199)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '4.0.0-alpha-3', revision: '8c567de6dc'
+System info: host: 'DESKTOP-LF9C4GT', ip: '192.168.68.118', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Users\DELL\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:53288}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cd546083f714255f0daf9d394a2667b7
+*** Element info: {Using=xpath, value=//select[@class='p-datepicker-month ng-tns-c148-12 ng-star-inserted']}
+                java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:191)org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:125)org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:576)org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:327)org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:445)org.openqa.selenium.By$ByXPath.findElement(By.java:396)org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:319)Modules.TransactionManagement.transactions(TransactionManagement.java:88)java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)java.base/java.lang.reflect.Method.invoke(Method.java:568)org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:135)org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:673)org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:220)org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:945)org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:193)org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)java.base/java.util.ArrayList.forEach(ArrayList.java:1511)org.testng.TestRunner.privateRun(TestRunner.java:808)org.testng.TestRunner.run(TestRunner.java:603)org.testng.SuiteRunner.runTest(SuiteRunner.java:429)org.testng.SuiteRunner.runSequentially(SuiteRunner.java:423)org.testng.SuiteRunner.privateRun(SuiteRunner.java:383)org.testng.SuiteRunner.run(SuiteRunner.java:326)org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)org.testng.TestNG.runSuitesSequentially(TestNG.java:1249)org.testng.TestNG.runSuitesLocally(TestNG.java:1169)org.testng.TestNG.runSuites(TestNG.java:1092)org.testng.TestNG.run(TestNG.java:1060)com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </failure>
+    </testcase>
+            <testcase
+                name="viewdetail"
+                time="1.162"
+                classname="Modules.TransactionManagement">
+
+            <failure type="org.openqa.selenium.ElementClickInterceptedException" message="element click intercepted: Element &lt;a _ngcontent-jrm-c184=&quot;&quot; ptooltip=&quot;View&quot; tooltipposition=&quot;top&quot; class=&quot;underLineText pointerClass&quot; style=&quot;color: #ff5e00; font-size: 13px; text-transform: capitalize;&quot;&gt;...&lt;/a&gt; is not clickable at point (350, 539). Other element would receive the click: &lt;div class=&quot;ng-trigger ng-trigger-overlayAnimation ng-tns-c148-9 p-datepicker p-component ng-star-inserted&quot; style=&quot;z-index: 1003; transform-origin: center bottom; top: -477px; left: 0px;&quot;&gt;...&lt;/div&gt;
+  (Session info: chrome=114.0.5735.199)
+Build info: version: &apos;4.0.0-alpha-3&apos;, revision: &apos;8c567de6dc&apos;
+System info: host: &apos;DESKTOP-LF9C4GT&apos;, ip: &apos;192.168.68.118&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Users\DELL\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:53288}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cd546083f714255f0daf9d394a2667b7">
+                <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a _ngcontent-jrm-c184="" ptooltip="View" tooltipposition="top" class="underLineText pointerClass" style="color: #ff5e00; font-size: 13px; text-transform: capitalize;">...</a> is not clickable at point (350, 539). Other element would receive the click: <div class="ng-trigger ng-trigger-overlayAnimation ng-tns-c148-9 p-datepicker p-component ng-star-inserted" style="z-index: 1003; transform-origin: center bottom; top: -477px; left: 0px;">...</div>
+  (Session info: chrome=114.0.5735.199)
+Build info: version: '4.0.0-alpha-3', revision: '8c567de6dc'
+System info: host: 'DESKTOP-LF9C4GT', ip: '192.168.68.118', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Users\DELL\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:53288}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cd546083f714255f0daf9d394a2667b7
+                java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:191)org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:125)org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:576)org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:308)org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)Modules.TransactionManagement.viewdetail(TransactionManagement.java:154)java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)java.base/java.lang.reflect.Method.invoke(Method.java:568)org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:135)org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:673)org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:220)org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:945)org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:193)org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)java.base/java.util.ArrayList.forEach(ArrayList.java:1511)org.testng.TestRunner.privateRun(TestRunner.java:808)org.testng.TestRunner.run(TestRunner.java:603)org.testng.SuiteRunner.runTest(SuiteRunner.java:429)org.testng.SuiteRunner.runSequentially(SuiteRunner.java:423)org.testng.SuiteRunner.privateRun(SuiteRunner.java:383)org.testng.SuiteRunner.run(SuiteRunner.java:326)org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)org.testng.TestNG.runSuitesSequentially(TestNG.java:1249)org.testng.TestNG.runSuitesLocally(TestNG.java:1169)org.testng.TestNG.runSuites(TestNG.java:1092)org.testng.TestNG.run(TestNG.java:1060)com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </failure>
+    </testcase>
+
+
+            <testcase
+                name="loginIn"
+                time="0.370"
+                classname="Modules.TransactionManagement">
+            </testcase>
+            <testcase
+                name="Test_verifyTitle"
+                time="5.072"
+                classname="Modules.TransactionManagement">
+            </testcase>
+</testsuite>
