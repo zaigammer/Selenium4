@@ -5,14 +5,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-import java.util.ArrayList;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class sidemenunavigation {
@@ -20,19 +20,28 @@ public class sidemenunavigation {
 
     static WebDriver driver;
     static WebDriverWait wait;
+    private Properties props;
+    private FileReader reader;
+
     @BeforeTest()
     public void launch(){
         System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        props = new Properties();
+        try {
+            reader = new FileReader("src/test/java/Modules/Config.properties");
+            props.load(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @Test(priority = 1)
-    public void verifyTitle() {
-        //    driver.get("https://www.example.com");
-        driver.get("http://3.6.118.47/admin/#/auth/login/simple");
+    public void Test_verifyTitle() {
+        driver.get(props.getProperty("url"));
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Simple Login | Mega Able Angular 7+";
+        String expectedTitle = "EDSTATE";
         Assert.assertEquals(actualTitle, expectedTitle);
     }
     @Test(priority = 2)
@@ -60,7 +69,7 @@ public class sidemenunavigation {
 
 
         String[] labels = {
-                "Dashboard", "Student Management", "Transactions", "Course Management", "Chapter Management",
+                "Dashboard", "Student Management", "Transactions","Staff Management","Course Management","Chapter Management",
                 "Ask Doubt", "Offer Management", "Trainer Management", "Exam", "Testimonial"};
         for (String navigatetosidemenu  : labels) {
             WebElement element = driver.findElement(By.xpath("(//li[contains(.,'" +navigatetosidemenu+ "')])[1]"));

@@ -11,30 +11,41 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ChapterManagement {
     static WebDriver driver;
     static WebDriverWait wait;
 
+    private Properties props;
+    private FileReader reader;
+
     @BeforeTest()
-    public void launch() {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-        driver = new ChromeDriver();
+    public void launch(){
+        System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+        driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        props = new Properties();
+        try {
+            reader = new FileReader("src/test/java/Modules/Config.properties");
+            props.load(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test(priority = 1)
-    public void verifyTitle() {
-        //    driver.get("https://www.example.com");
-        driver.get("http://3.6.118.47/admin/#/auth/login/simple");
+    public void Test_verifyTitle() {
+        driver.get(props.getProperty("url"));
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Simple Login | Mega Able Angular 7+";
+        String expectedTitle = "EDSTATE";
         Assert.assertEquals(actualTitle, expectedTitle);
     }
-
     @Test(priority = 2)
     public void loginIn() {
         driver.findElement(By.xpath("//input[@name='email']")).sendKeys("admin");

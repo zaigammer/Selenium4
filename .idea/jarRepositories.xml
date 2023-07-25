@@ -2,6 +2,11 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="c6dec99b-6495-4bde-8a99-062e365bcc3d" />
+      <option name="name" value="c6dec99b-6495-4bde-8a99-062e365bcc3d" />
+      <option name="url" value="https://mvnrepository.com/artifact/com.google.inject/guice" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />

@@ -1,9 +1,5 @@
 package Modules;
 
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -16,27 +12,42 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
 public class StudentManagement {
     static WebDriver driver;
     static WebDriverWait wait;
 
+    private Properties props;
+    private FileReader reader;
+
     @BeforeTest()
-    public void launch() {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-        driver = new ChromeDriver();
+    public void launch(){
+        System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+        driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        props = new Properties();
+        try {
+            reader = new FileReader("src/test/java/Modules/Config.properties");
+            props.load(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test(priority = 1)
     public void Test_verifyTitle() {
-        //    driver.get("https://www.example.com");
-        driver.get("http://3.6.118.47/admin/#/auth/login/simple");
+        driver.get(props.getProperty("url"));
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Simple Login | Mega Able Angular 7+";
+        String expectedTitle = "EDSTATE";
         Assert.assertEquals(actualTitle, expectedTitle);
     }
-
     @Test(priority = 2)
     public void Test_LoginIn() {
         driver.findElement(By.xpath("//input[@name='email']")).sendKeys("admin");
@@ -123,7 +134,7 @@ public class StudentManagement {
     @Test(priority = 7)
     public void Viewdetail() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        driver.findElement(By.xpath("//a[contains(text(),'Adityakumar Manojkumar Agarwal')]")).click();
+        driver.findElement(By.xpath("//a[contains(text(),'Anuj')]")).click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,350)", "");
         String[] labels = { "Name", "Email Address", "Mobile Number", "Designation", "Occupation","Date Of Birth",

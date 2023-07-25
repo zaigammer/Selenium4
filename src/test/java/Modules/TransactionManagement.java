@@ -1,22 +1,22 @@
 package Modules;
 
-import java.time.Duration;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class TransactionManagement {
 	
@@ -25,23 +25,31 @@ public class TransactionManagement {
     static WebDriver driver;
     static WebDriverWait wait;
 
+    private Properties props;
+    private FileReader reader;
+
     @BeforeTest()
     public void launch(){
         System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	}
-    
-    @Test(priority = 1)
-    public void verifyTitle() {
-        //    driver.get("https://www.example.com");
-        driver.get("http://3.6.118.47/admin/#/auth/login/simple");
-        String actualTitle = driver.getTitle();
-        String expectedTitle = "Simple Login | Mega Able Angular 7+";
-        Assert.assertEquals(actualTitle, expectedTitle);
+        props = new Properties();
+        try {
+            reader = new FileReader("src/test/java/Modules/Config.properties");
+            props.load(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    @Test(priority = 1)
+    public void Test_verifyTitle() {
+        driver.get(props.getProperty("url"));
+        String actualTitle = driver.getTitle();
+        String expectedTitle = "EDSTATE";
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
 
     @Test(priority = 2)
     public void loginIn() {

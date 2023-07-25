@@ -1,18 +1,20 @@
 package Modules;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class CourseManagement {
@@ -20,23 +22,31 @@ public class CourseManagement {
     static WebDriver driver;
     static WebDriverWait wait;
 
+    private Properties props;
+    private FileReader reader;
+
     @BeforeTest()
-    public void launch() {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-        driver = new ChromeDriver();
+    public void launch(){
+        System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+        driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        props = new Properties();
+        try {
+            reader = new FileReader("src/test/java/Modules/Config.properties");
+            props.load(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test(priority = 1)
-    public void verifyTitle() {
-        //    driver.get("https://www.example.com");
-        driver.get("http://3.6.118.47/admin/#/auth/login/simple");
+    public void Test_verifyTitle() {
+        driver.get(props.getProperty("url"));
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Simple Login | Mega Able Angular 7+";
+        String expectedTitle = "EDSTATE";
         Assert.assertEquals(actualTitle, expectedTitle);
     }
-
     @Test(priority = 2)
     public void loginIn() {
         driver.findElement(By.xpath("//input[@name='email']")).sendKeys("admin");
@@ -93,6 +103,7 @@ public class CourseManagement {
         String Total = totalCourses.getText();
         System.out.println("Total Courses:" + Total);
     }
+
     @Test(priority = 6)
     public void addNewCourse() {
          wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -103,10 +114,10 @@ public class CourseManagement {
                 sendKeys("Testing Program");
         driver.findElement(By.xpath("//input[@placeholder='Sales Tag']")).
                 sendKeys("manual testing");
-        driver.findElement(By.xpath("//div[contains(text(),'Select Language')]")).click();
+/*        driver.findElement(By.xpath("//div[contains(text(),'Select Language')]")).click();
         //dropdown
         driver.findElement(By.xpath("//span[contains(text(),'Hindi')]")).click();
-        driver.findElement(By.xpath("//span[contains(text(),'English')]")).click();
+        driver.findElement(By.xpath("//span[contains(text(),'English')]")).click();  */
         //Add Thumbnail
         WebElement chooseFile = driver.findElement(By.id("motherProfileImage"));
         chooseFile.sendKeys("C:/Users/DELL/Downloads/image.jpg");
@@ -159,8 +170,40 @@ public class CourseManagement {
             System.out.println("Test Failed : User unable to saved course successfully");
         }
     }
-
     @Test(priority = 7)
+    public void update() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        driver.findElement(By.xpath("(//a[contains(@ptooltip,'View')])[1]")).click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,550)", "");
+        WebElement selectchapters = driver.findElement
+                (By.xpath("//span[.='Select Chapters']"));
+        // Adjust the XPath to target your side menu element
+        js.executeScript("arguments[0].scrollIntoView(true);", selectchapters);
+
+    // driver.findElement(By.xpath("//span[.='Select Chapters'])")).click();
+        wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//span[contains(.,'Select Chapters')]"))).click();
+        driver.findElement(By.xpath("//input[contains(@autocomplete,'off')]")).sendKeys("Sale");
+    driver.findElement(By.xpath("//li[@class='p-dropdown-item p-ripple']")).click();
+        driver.findElement(By.xpath("//input[@placeholder='Sequence Number']")).sendKeys("1");
+        driver.findElement(By.xpath("//button[contains(text(),'Add Lecture')]")).click();
+        driver.findElement(By.xpath("(//button[contains(.,'Save')])[2]")).click();
+
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("(//div[@id='swal2-content'])[1]")));
+        driver.findElement(By.xpath("(//div[@id='swal2-content'])[1]"));
+        WebElement submit = driver.findElement(By.xpath("(//button[normalize-space()='OK'])[1]"));
+        if (submit.isEnabled()) {
+            submit.click();
+            System.out.println("Test Passed : User able to saved course successfully");
+        } else {
+            System.out.println("Test Failed : User unable to saved course successfully");
+        }
+    }
+
+/*
+    @Test(priority = 8)
     public void ActionDelete() {
         WebElement filterElement = driver.
                 findElement(By.xpath("(//a[@ptooltip='Delete Data'])[1]"));
@@ -181,6 +224,8 @@ public class CourseManagement {
             System.out.println("Test Failed : User unable to deleted course successfully");
         }
     }
+
+ */
 
 
 
